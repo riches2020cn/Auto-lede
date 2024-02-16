@@ -123,6 +123,11 @@ jobs:
         mv package/OpenClash/luci-app-openclash package
         rm -rf package/OpenClash
 
+    - name: Import external feeds - OpenClash
+      working-directory: ./openwrt
+      run: |
+        git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/adguardhome
+  
     # 范例 1: 注意拉取命令的保存路径
     #- name: Import external feeds - OpenAppFilter
     #  working-directory: ./openwrt
