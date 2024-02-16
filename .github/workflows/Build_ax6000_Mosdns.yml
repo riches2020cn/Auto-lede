@@ -6,7 +6,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #=================================================
 
-name: BBuild_ax6000_Mosdns
+name: Build_ax6000_Mosdns
 
 # Add a button to trigger the workflow
 on: 
