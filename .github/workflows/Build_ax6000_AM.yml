@@ -123,7 +123,7 @@ jobs:
         mv package/OpenClash/luci-app-openclash package
         rm -rf package/OpenClash
 
-    - name: Import external feeds - OpenClash
+    - name: Import external feeds - AdGuardHome
       working-directory: ./openwrt
       run: |
         git clone https://github.com/rufengsuixing/luci-app-adguardhome.git package/adguardhome
