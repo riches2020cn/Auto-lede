@@ -158,5 +158,5 @@ jobs:
     - name : Upload artifact
       uses: actions/upload-artifact@master
       with:
-        name: cr660x
+        name: OpenWrt
         path: openwrt/bin
