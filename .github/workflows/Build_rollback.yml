@@ -6,7 +6,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #=================================================
 
-name: Build_ax6000
+name: Build_rollback
 
 # Add a button to trigger the workflow
 on: 
@@ -142,7 +142,7 @@ jobs:
     #    rm -rf feeds/luci/themes/luci-theme-argon
     #    git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon
         
-    - name: Configuration Customization - Build_ax6000
+    - name: Configuration Customization - Build_rollback
       env:
         CONFIG_FILE: 'ax6000.config'
       run: |
