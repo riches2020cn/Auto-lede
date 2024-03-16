@@ -172,13 +172,10 @@ jobs:
       run: |
         git checkout d75705cfc46e90b766869242bf8e748356f8500c
 
-    - name: Configuration Customization - Build_rollback_ax6000
-      env:
-        CONFIG_FILE: 'ax6000.config'
+    - name: make defconfig
+      working-directory: ./openwrt
       run: |
-        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
-        chmod +x ./customize.sh && ./customize.sh
-        cd openwrt && make defconfig
+        make defconfig
         
     - name: Build firmware
       working-directory: ./openwrt
