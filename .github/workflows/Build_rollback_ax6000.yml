@@ -161,16 +161,24 @@ jobs:
       run: |
         df -h
 
+    - name: dirclean
+      working-directory: ./openwrt
+      run: |
+        make dirclean        
+
       # 回滚历史版本:修改你要的版本参数
     - name: rollback
       working-directory: ./openwrt
       run: |
         git checkout d75705cfc46e90b766869242bf8e748356f8500c
 
-    - name: Update feeds
-      working-directory: ./openwrt
+    - name: Configuration Customization - Build_rollback_ax6000
+      env:
+        CONFIG_FILE: 'ax6000.config'
       run: |
-        make dirclean
+        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
+        chmod +x ./customize.sh && ./customize.sh
+        cd openwrt && make defconfig
         
     - name: Build firmware
       working-directory: ./openwrt
