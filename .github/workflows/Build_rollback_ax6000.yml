@@ -170,18 +170,8 @@ jobs:
     - name: Update feeds
       working-directory: ./openwrt
       run: |
-        ./scripts/feeds update -a
-
-    - name: Install feeds
-      working-directory: ./openwrt
-      run: |
-        ./scripts/feeds install -a
-
-    - name: Install feeds
-      working-directory: ./openwrt
-      run: |
-        ./scripts/feeds install -a
-
+        make dirclean
+        
     - name: Build firmware
       working-directory: ./openwrt
       run: |
