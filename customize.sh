@@ -19,5 +19,5 @@ sed -i 's/+luci-theme-bootstrap/+luci-theme-argon-mod/g' openwrt/feeds/luci/coll
 sed -i 's/set wireless.default_radio${devidx}.ssid=OpenWrt/set wireless.default_radio${devidx}.ssid=Hello/g; s/set wireless.default_radio${devidx}.encryption=none/set wireless.default_radio${devidx}.encryption=psk-mixed/g' openwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh 
 sed -i '/set wireless.default_radio${devidx}.encryption=psk-mixed/a \                                                set wireless.default_radio${devidx}.key=password' openwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
-#4. Replace with JerryKuKu’s Argon
+#5. Replace with JerryKuKu’s Argon
 #rm openwrt/package/lean/luci-theme-argon -rf
