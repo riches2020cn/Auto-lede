@@ -16,7 +16,7 @@ sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' openwrt/package/lean/default-se
 sed -i 's/+luci-theme-bootstrap/+luci-theme-argon-mod/g' openwrt/feeds/luci/collections/luci/Makefile
 
 #4. 修改WiFi名称和密码
-sed -i 's/set wireless.default_radio${devidx}.ssid=OpenWrt/set wireless.default_radio${devidx}.ssid=hello/g; s/set wireless.default_radio${devidx}.encryption=none/set wireless.default_radio${devidx}.encryption=psk-mixed/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh && sed -i '/set wireless.default_radio${devidx}.encryption=psk-mixed/a \                                                set wireless.default_radio${devidx}.key=password' openwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -i 's/set wireless.default_radio${devidx}.ssid=OpenWrt/set wireless.default_radio${devidx}.ssid=hello/g; s/set wireless.default_radio${devidx}.encryption=none/set wireless.default_radio${devidx}.encryption=psk-mixed/g' openwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh && sed -i '/set wireless.default_radio${devidx}.encryption=psk-mixed/a \                                                set wireless.default_radio${devidx}.key=password' openwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 #4. Replace with JerryKuKu’s Argon
 #rm openwrt/package/lean/luci-theme-argon -rf
