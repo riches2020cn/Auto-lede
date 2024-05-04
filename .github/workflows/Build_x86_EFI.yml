@@ -129,7 +129,7 @@ jobs:
     - name: Import external feeds - poweroff
       working-directory: ./openwrt
       run: |
-        git clone https://github.com/sky2016cn/luci-app-poweroff.git package/luci-app-poweroff     
+        git clone https://github.com/sky2016cn/luci-app-poweroff.git package/luci-app-poweroff
     
     # 范例 1: 注意拉取命令的保存路径
     #- name: Import external feeds - OpenAppFilter
