@@ -114,6 +114,11 @@ jobs:
       working-directory: ./openwrt
       run: |
         ./scripts/feeds install -a
+
+    - name: Import external feeds - msd_lite
+      working-directory: ./openwrt
+      run: |
+        git clone https://github.com/ximiTech/luci-app-msd_lite.git package/luci-app-msd_lite
   
     # 范例 1: 注意拉取命令的保存路径
     #- name: Import external feeds - OpenClash
