@@ -125,7 +125,7 @@ jobs:
     - name: Import external feeds - xupnpd
       working-directory: ./openwrt
       run: |
-        git clone https://github.com/jarod360/luci-app-xupnpd.git feeds/luci/applications/luci-app-xupnpd
+        git clone https://github.com/riches2020cn/luci-app-xupnpd.git feeds/luci/applications/luci-app-xupnpd
 
     - name: Update feeds
       working-directory: ./openwrt
