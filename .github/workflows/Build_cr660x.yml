@@ -118,7 +118,7 @@ jobs:
     - name: Import external feeds - msd_lite
       working-directory: ./openwrt
       run: |
-        git clone https://github.com/ximiTech/luci-app-msd_lite.git feeds/luci/applications/luci-app-msd_lite
+        git clone https://github.com/ximiTech/luci-app-msd_lite.git package/luci-app-msd_lite
         rm -rf feeds/packages/net/msd_lite
         git clone https://github.com/ximiTech/msd_lite.git feeds/packages/net/msd_lite
         
