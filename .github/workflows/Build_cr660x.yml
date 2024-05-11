@@ -126,7 +126,7 @@ jobs:
       working-directory: ./openwrt
       run: |
         git clone https://github.com/riches2020cn/luci-app-xupnpd.git feeds/luci/applications/luci-app-xupnpd
-        git clone https://github.com/jarod360/packages.git package/packages
+        git clone --depth=1 https://github.com/jarod360/packages.git package/packages
         rm -rf feeds/packages/multimedia/xupnpd
         mv package/packages/xupnpd feeds/packages/multimedia
         rm -rf package/packages
