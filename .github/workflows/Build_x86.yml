@@ -137,12 +137,7 @@ jobs:
         git clone https://github.com/ximiTech/luci-app-msd_lite.git feeds/luci/applications/luci-app-msd_lite
         rm -rf feeds/packages/net/msd_lite
         git clone https://github.com/ximiTech/msd_lite.git feeds/packages/net/msd_lite
-
-    - name: Import external feeds - xupnpd
-      working-directory: ./openwrt
-      run: |
-        git clone https://github.com/riches2020cn/luci-app-xupnpd.git feeds/luci/applications/luci-app-xupnpd        
-        
+               
     - name: Update feeds
       working-directory: ./openwrt
       run: |
