@@ -2,11 +2,11 @@
 云编译Lede-OpenWrt
 
 
-1. 编译某个插件，在“xxx.config”文件添加
+1. 编译某个插件，打开“xxx.config”文件添加
    
    例如：CONFIG_PACKAGE_luci-app-dockerman=y
 
-2. 取消编译某个插件，在“xxx.config”文件添加
+2. 取消编译某个插件，打开“xxx.config”文件添加
    
    例如：# CONFIG_PACKAGE_luci-app-dockerman is not set
 
