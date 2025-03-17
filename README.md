@@ -24,7 +24,7 @@
 
    编译为默认皮肤：在“customize_x86.sh”和“customize.sh”中恢复注释掉的“修改默认皮肤”
 
-6. 编译完成后，请检查 Github 输出的编译过程，细察是否出错。
+6. 编译完成后，请检查 Github 输出的编译过程，细察是否出错，尤其注意“Initialization environment”安装依赖包部分
 
    jobs:
   build:
