@@ -18,4 +18,4 @@
 
    CONFIG_PACKAGE_luci-theme-argon=y
    
-   然后在所有的“Build_xxx.yml”脚本中恢复注释掉的代码
+   然后在所有的“Build_xxx.yml”脚本中恢复注释掉的“luci-theme-argon”代码
