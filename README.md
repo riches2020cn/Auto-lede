@@ -5,7 +5,7 @@
 打开“xxx.config”文件：
 
 编译某个插件，
-写法如：CONFIG_PACKAGE_luci-app-dockerman=y
+例如：CONFIG_PACKAGE_luci-app-dockerman=y
 
 不编译某个插件，
-写法如：# CONFIG_PACKAGE_luci-app-dockerman is not set
+例如：# CONFIG_PACKAGE_luci-app-dockerman is not set
