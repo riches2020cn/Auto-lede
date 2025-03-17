@@ -41,11 +41,11 @@
    - name: Initialization environment
    - name: Check Space
      
-   上面八大部分都来参考：https://github.com/dzlea/ActionsBuildOpenWRT/tree/main/.github/workflows
+   上面八大部分参考：https://github.com/dzlea/ActionsBuildOpenWRT/tree/main/.github/workflows
 
    余下部分参考：https://github.com/esirplayground/AutoBuild-OpenWrt
 
-   在此感谢原作者的付出！
+   在此感谢两位原作者的付出！
 
    
 
