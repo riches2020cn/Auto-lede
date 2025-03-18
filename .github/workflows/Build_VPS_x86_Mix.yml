@@ -104,6 +104,39 @@ jobs:
       # L大默认添加了dockerman
       # echo "src-git dockerman https://github.com/lisaac/luci-app-dockerman" >> ./feeds.conf.default
 
+    # 给VPS配置网络，创建"files/etc/config"文件夹，新建配置“network”和“firewall”文件
+    - name: Create config directory and add network and firewall configurations
+      working-directory: ./openwrt
+      run: |
+        mkdir -p ./openwrt/files/etc/config
+    
+    - name: Create config directory and add network and firewall configurations
+      working-directory: ./openwrt
+      run: |
+        mkdir -p ./openwrt/files/etc/config
+    
+        cat <<EOF > ./openwrt/files/etc/config/network
+        config interface 'wan'
+            option ifname   'eth0'
+            option proto    'static'
+            option ipaddr   '156.245.25.36'
+            option gateway  '10.4.210.1'
+            option netmask  '255.255.255.0'
+            list dns        '8.8.8.8'
+        EOF
+    
+        cat <<EOF > ./openwrt/files/etc/config/firewall
+        config zone
+            option name    'wan'
+            list network   'wan'
+            list network   'wan6'
+            option input   'ACCEPT'
+            option output  'ACCEPT'
+            option forward 'ACCEPT'
+            option masq    '1'
+            option mtu_fix '1'
+        EOF
+        
     - name: Update feeds
       working-directory: ./openwrt
       run: |
