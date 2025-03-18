@@ -6,7 +6,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #=================================================
 
-name: Build_VPS_x86_Mix
+name: Build_x86_Mix
 
 # Add a button to trigger the workflow
 on: 
@@ -25,10 +25,10 @@ jobs:
     steps:
     - name: Before freeing up disk space
       run: |
-         "Before freeing up disk space"
-         "=============================================================================="
+        echo "Before freeing up disk space"
+        echo "=============================================================================="
         df -hT
-         "=============================================================================="
+        echo "=============================================================================="
 
     - name: "Optimize Disk Space"
       uses: "hugoalh/disk-space-optimizer-ghaction@v0.8.1"
@@ -64,8 +64,8 @@ jobs:
 
     - name: Free up disk space complete
       run: |
-         "Free up disk space complete"
-         "=============================================================================="
+        echo "Free up disk space complete"
+        echo "=============================================================================="
         df -hT
         echo "=============================================================================="
           
