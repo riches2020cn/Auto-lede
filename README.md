@@ -10,7 +10,7 @@
    
    例如：# CONFIG_PACKAGE_luci-app-dockerman is not set
 
-3. 若要使用自带的“luci-theme-argon”皮肤，在“xxx.config”文件添加
+3. 若要使用Lean的“luci-theme-argon”皮肤，在“xxx.config”文件添加
    
    CONFIG_PACKAGE_luci-theme-argon=y
 
@@ -40,7 +40,7 @@
      
    - name: Free up disk space complete
        - name: Checkout
-      uses: actions/checkout@master  //原文末尾是“@main”，可自己来定义
+      uses: actions/checkout@master  //原文末尾是“@main”，可自己定义
 
    - name: Initialization environment
    - name: Check Space
