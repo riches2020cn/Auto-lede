@@ -6,7 +6,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #=================================================
 
-name: Build_x86_Mix
+name: Build_VPS_x86_Mix
 
 # Add a button to trigger the workflow
 on: 
