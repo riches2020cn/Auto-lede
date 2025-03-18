@@ -10,7 +10,7 @@
    
    例如：# CONFIG_PACKAGE_luci-app-dockerman is not set
 
-3. 若要使用Lean的“luci-theme-argon”皮肤，在“xxx.config”文件添加
+3. 若要使用 Lean 的“luci-theme-argon”皮肤，在“xxx.config”文件添加
    
    CONFIG_PACKAGE_luci-theme-argon=y
 
