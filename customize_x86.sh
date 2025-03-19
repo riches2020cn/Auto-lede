@@ -25,7 +25,7 @@ sed -i '/config zone/{/option name\s*wan/{N;s/option input\s*REJECT/option input
         option mtu_fix 1\
         option masq 1\
         list network "wan6"\
-}}' package/network/config/firewall/files/firewall.config
+}}' openwrt/package/network/config/firewall/files/firewall.config
 
 #3. 修改默认皮肤
 sed -i 's/+luci-theme-bootstrap/+luci-theme-argon/g' openwrt/feeds/luci/collections/luci/Makefile
