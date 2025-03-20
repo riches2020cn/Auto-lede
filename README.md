@@ -30,7 +30,7 @@
 
    下方“Build_xxx.yml”脚本中的八大部分参考：https://github.com/dzlea/ActionsBuildOpenWRT/tree/main/.github/workflows
    
---------------------------------------------------------------------------------------
+-----------------------------------------------------------------------
    jobs:
   build:
     runs-on: ubuntu-22.04
@@ -48,8 +48,9 @@
      uses: actions/checkout@master  //原文末尾是“@main”，可自己定义
 
    - name: Initialization environment
+     
    - name: Check Space
---------------------------------------------------------------------------------------
+-----------------------------------------------------------------------
 
    余下部分参考：https://github.com/esirplayground/AutoBuild-OpenWrt
 
