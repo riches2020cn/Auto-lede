@@ -1,5 +1,5 @@
 # AutoBuild-lede
-云编译Lede-OpenWrt
+云编译 Lede-OpenWrt
 
 
 1. 编译某个插件，在“xxx.config”文件添加
@@ -28,12 +28,12 @@
   
    尤其注意“Initialization environment”安装依赖包部分，展开来细看是否出错
 
-   下方“Build_xxx.yml”脚本中的八大部分参考：https://github.com/dzlea/ActionsBuildOpenWRT/tree/main/.github/workflows
-   
+   下方“Build_xxx.yml”脚本中的八大部分参考：https://github.com/dzlea/ActionsBuildOpenWRT/tree/main/.github/workflows   
 -----------------------------------------------------------------------
-   jobs:
+
+jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-22.04  //注意ubuntu版本号
 
    - name: Before freeing up disk space
 
