@@ -36,7 +36,10 @@
     runs-on: ubuntu-22.04
 
    - name: Before freeing up disk space
+   - 
    - name: "Optimize Disk Space"
+     uses: "hugoalh/disk-space-optimizer-ghaction@v0.8.1" //版本号
+
    - name: Freeing up disk space
      
    - name: Free up disk space complete
