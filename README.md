@@ -30,7 +30,7 @@
 
    下方“Build_xxx.yml”脚本中的八大部分参考：https://github.com/dzlea/ActionsBuildOpenWRT/tree/main/.github/workflows
    
-   -------------------------------------------------------------------
+--------------------------------------------------------------------------------------
    jobs:
   build:
     runs-on: ubuntu-22.04
@@ -38,8 +38,7 @@
    - name: Before freeing up disk space
 
    - name: "Optimize Disk Space"
-     uses: "hugoalh/disk-space-optimizer-ghaction@v0.8.1"
-     //注意“@v0.8.1”版本号
+     uses: "hugoalh/disk-space-optimizer-ghaction@v0.8.1"   //注意“@v0.8.1”版本号
 
    - name: Freeing up disk space
      
@@ -50,7 +49,7 @@
 
    - name: Initialization environment
    - name: Check Space
-   -------------------------------------------------------------------
+--------------------------------------------------------------------------------------
 
    余下部分参考：https://github.com/esirplayground/AutoBuild-OpenWrt
 
