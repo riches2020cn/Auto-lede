@@ -131,7 +131,7 @@ jobs:
           option mtu_fix '1'" > files/etc/config/firewall
 
         # Set maximum permissions (777) for all files in the 'files' directory
-        chmod -R 777 files          
+        chmod -R 755 files          
         
     - name: Update feeds
       working-directory: ./openwrt
