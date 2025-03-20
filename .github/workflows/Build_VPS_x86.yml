@@ -136,8 +136,8 @@ jobs:
       working-directory: ./openwrt
       run: |
         chmod -R 755 files
-        chmod 755 files/etc/config/network
-        chmod 755 files/etc/config/firewall
+        chmod 644 files/etc/config/network
+        chmod 644 files/etc/config/firewall
         
     - name: Update feeds
       working-directory: ./openwrt
