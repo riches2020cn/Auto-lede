@@ -38,7 +38,8 @@
    - name: Before freeing up disk space
 
    - name: "Optimize Disk Space"
-     uses: "hugoalh/disk-space-optimizer-ghaction@v0.8.1"                       //注意“@v0.8.1”版本号
+     uses: "hugoalh/disk-space-optimizer-ghaction@v0.8.1"
+     //注意“@v0.8.1”版本号
 
    - name: Freeing up disk space
      
