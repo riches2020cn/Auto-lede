@@ -104,7 +104,7 @@ jobs:
       # L大默认添加了dockerman
       # echo "src-git dockerman https://github.com/lisaac/luci-app-dockerman" >> ./feeds.conf.default
 
-    - name: Import external - files
+    - name: files大法，涡轮增雕
       working-directory: ./openwrt
       run: |
         git clone https://github.com/riches2020cn/files.git
