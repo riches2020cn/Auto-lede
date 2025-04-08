@@ -156,7 +156,7 @@ jobs:
 
     - name: Configuration Customization - Build_ax6000_immortalwrt
       env:
-        CONFIG_FILE: 'x86_immortalwrt.config'
+        CONFIG_FILE: 'ax6000_immortalwrt.config'
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE immortalwrt/.config
         chmod +x ./customize_immortalwrt.sh && ./customize_immortalwrt.sh
