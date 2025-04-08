@@ -60,6 +60,6 @@ jobs:
 # AutoBuild-immortalwrt
 云编译 immortalwrt-OpenWrt
 
-注意：拉取 Stable Release 版本号：v24.10.0，拉取命令末尾添加如果拉取失败，自动退出命令
+注意：拉取 Stable Release 版本号：v24.10.0，拉取命令末尾添加了拉取失败自动退出命令
 
 注意：查看版本号：https://downloads.immortalwrt.org/                 
