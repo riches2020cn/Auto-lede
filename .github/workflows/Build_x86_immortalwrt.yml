@@ -190,5 +190,5 @@ jobs:
     - name : Upload artifact
       uses: actions/upload-artifact@master
       with:
-        name: x86
+        name: x86_immortalwrt
         path: immortalwrt/bin
