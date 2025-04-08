@@ -92,9 +92,8 @@ jobs:
     - name: Clone source code
       env: 
         REPO_URL: https://github.com/immortalwrt/immortalwrt
-        REPO_BRANCH: master
       run: |
-        git clone --depth 1 -b openwrt-2.05 --single-branch --filter=blob:none $REPO_URL immortalwrt
+        git clone --depth 1 -b openwrt-23.05 --single-branch --filter=blob:none $REPO_URL immortalwrt || { echo 'Git clone failed!'; exit 1; }
         cd immortalwrt
         echo "src-git helloworld https://github.com/fw876/helloworld.git" >> ./feeds.conf.default
         echo "src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git;main" >> ./feeds.conf.default
@@ -168,7 +167,7 @@ jobs:
         CONFIG_FILE: 'x86_immortalwrt.config'
       run: |
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE immortalwrt/.config
-        chmod +x ./customize_x86.sh && ./customize_x86.sh
+        chmod +x ./customize_x86_immortalwrt.sh && ./customize_x86_immortalwrt.sh
         cd immortalwrt && make defconfig
         
     - name: Download package
