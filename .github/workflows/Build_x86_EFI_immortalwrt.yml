@@ -93,8 +93,8 @@ jobs:
       env: 
         REPO_URL: https://github.com/immortalwrt/immortalwrt
       run: |
-        git clone --depth 1 -b openwrt-24.10.0 --single-branch --filter=blob:none $REPO_URL immortalwrt || { echo 'Git clone failed!'; exit 1; }
-    # 查看版本号官网：https://downloads.immortalwrt.org/
+        git clone --depth 1 -b v24.10.0 --single-branch --filter=blob:none $REPO_URL immortalwrt || { echo 'Git clone failed!'; exit 1; }
+    # 查看版本号：https://downloads.immortalwrt.org/
         cd immortalwrt
         echo "src-git helloworld https://github.com/fw876/helloworld.git" >> ./feeds.conf.default
         echo "src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git;main" >> ./feeds.conf.default
