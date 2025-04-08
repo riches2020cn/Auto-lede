@@ -94,8 +94,8 @@ jobs:
         REPO_URL: https://github.com/immortalwrt/immortalwrt
         REPO_BRANCH: master
       run: |
-        git clone --depth 1 -b openwrt-24.10 --single-branch --filter=blob:none $REPO_URL -b $REPO_BRANCH openwrt
-        cd openwrt
+        git clone --depth 1 -b openwrt-24.10 --single-branch --filter=blob:none $REPO_URL -b $REPO_BRANCH immortalwrt
+        cd immortalwrt
         echo "src-git helloworld https://github.com/fw876/helloworld.git" >> ./feeds.conf.default
         echo "src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git;main" >> ./feeds.conf.default
         echo "src-git passwall https://github.com/xiaorouji/openwrt-passwall.git;main" >> ./feeds.conf.default
@@ -105,35 +105,35 @@ jobs:
       # echo "src-git dockerman https://github.com/lisaac/luci-app-dockerman" >> ./feeds.conf.default
         
     - name: Update feeds
-      working-directory: ./openwrt
+      working-directory: ./immortalwrt
       run: |
         ./scripts/feeds update -a
 
     - name: Install feeds
-      working-directory: ./openwrt
+      working-directory: ./immortalwrt
       run: |
         ./scripts/feeds install -a
 
     - name: Install feeds
-      working-directory: ./openwrt
+      working-directory: ./immortalwrt
       run: |
         ./scripts/feeds install -a
 
     - name: Import external feeds - OpenClash
-      working-directory: ./openwrt
+      working-directory: ./immortalwrt
       run: |
         git clone --depth=1 https://github.com/vernesong/OpenClash.git package/OpenClash
         mv package/OpenClash/luci-app-openclash package
         rm -rf package/OpenClash
 
     - name: Import external feeds - poweroff
-      working-directory: ./openwrt
+      working-directory: ./immortalwrt
       run: |
         git clone https://github.com/sky2016cn/luci-app-poweroff.git package/luci-app-poweroff   
 
     # msd_lite 必须放在feeds命令后，L大默认添加了 msd_lite，使用 msd_lite 收看 IPTV
     #- name: Import external feeds - msd_lite
-    #  working-directory: ./openwrt
+    #  working-directory: ./immortalwrt
     #  run: |
     #    git clone https://github.com/ximiTech/luci-app-msd_lite.git package/luci-app-msd_lite
     #    rm -rf feeds/packages/net/msd_lite
@@ -141,24 +141,24 @@ jobs:
 
     # 如果添加上方的 msd_lite，需要再次运行更新feeds命令    
     #- name: Update feeds
-    #  working-directory: ./openwrt
+    #  working-directory: ./immortalwrt
     #  run: |
     #    ./scripts/feeds update -a
         
     #- name: Install feeds
-    #  working-directory: ./openwrt
+    #  working-directory: ./immortalwrt
     #  run: |
     #    ./scripts/feeds install -a
         
     # 范例 1: 注意拉取命令的保存路径
     #- name: Import external feeds - OpenAppFilter
-    #  working-directory: ./openwrt
+    #  working-directory: ./oimmortalwrt
     #  run: |
     #    git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 
     # 范例 2: argon皮肤必须放在feeds命令后，注意保存路径是feeds，替换原有的argon皮肤，如果Lean全部取消了argon皮肤，需要更改保存路径到package/luci-theme-argon
     #- name: Import external feeds - luci-theme-argon
-    #  working-directory: ./openwrt
+    #  working-directory: ./immortalwrt
     #  run: |
     #    rm -rf feeds/luci/themes/luci-theme-argon
     #    git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon    
@@ -167,19 +167,19 @@ jobs:
       env:
         CONFIG_FILE: 'x86_immortalwrt.config'
       run: |
-        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
+        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE immortalwrt/.config
         chmod +x ./customize_x86.sh && ./customize_x86.sh
-        cd openwrt && make defconfig
+        cd immortalwrt && make defconfig
         
     - name: Download package
-      working-directory: ./openwrt
+      working-directory: ./immortalwrt
       run: |
         make download -j$(nproc)
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
     - name: Build firmware
-      working-directory: ./openwrt
+      working-directory: ./immortalwrt
       run: |
         echo -e "$(nproc) thread build."
         make -j$(nproc) V=s
@@ -192,4 +192,4 @@ jobs:
       uses: actions/upload-artifact@master
       with:
         name: x86
-        path: openwrt/bin
+        path: immortalwrt/bin
