@@ -57,9 +57,9 @@ jobs:
    在此感谢两位原作者的付出！
 
 
-   # AutoBuild-immortalwrt
+# AutoBuild-immortalwrt
 云编译 immortalwrt-OpenWrt
-//注意：脚本拉取 -b openwrt-23.05 分支，末尾添加如果拉取失败退出
 -----------------------------------------------------------------------
+//注意：脚本拉取 -b openwrt-23.05 分支，末尾添加如果拉取失败退出
 git clone --depth 1 -b openwrt-23.05 --single-branch --filter=blob:none $REPO_URL immortalwrt || { echo 'Git clone failed!'; exit 1; }
 -----------------------------------------------------------------------                     
