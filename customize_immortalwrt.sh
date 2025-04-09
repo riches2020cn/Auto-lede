@@ -18,12 +18,12 @@ sed -i 's/192.168.1.1/192.168.2.1/g' immortalwrt/package/base-files/files/bin/co
 #sed -i '/set wireless.default_${name}.encryption=psk-mixed/a \                        set wireless.default_${name}.key=password' immortalwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 #4. v24.10.0 版本，修改WiFi名称为Hello，密码password，只适用于硬路由，注意有两处保存路径
-ssid="${defaults?.ssid:-ImmortalWrt}"
-encryption="${defaults?.encryption:-none}"
-key="${defaults?.key:-}"
-sed -i "s/set \${si}.ssid='${ssid}'/set \${si}.ssid='${ssid}'/g" immortalwrt/package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
-sed -i "s/set \${si}.encryption='${encryption}'/set \${si}.encryption='${encryption}'/g" immortalwrt/package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
-sed -i "s/set \${si}.key='${key}'/set \${si}.key='${key}'/g" immortalwrt/package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
+SSID="${SSID:-ImmortalWrt}"
+ENCRYPTION="${ENCRYPTION:-none}"
+KEY="${KEY:-}"
+sed -i "s/set \${si}.ssid='.*'/set \${si}.ssid='${SSID}'/g" immortalwrt/package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
+sed -i "s/set \${si}.encryption='.*'/set \${si}.encryption='${ENCRYPTION}'/g" immortalwrt/package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
+sed -i "s/set \${si}.key='.*'/set \${si}.key='${KEY}'/g" immortalwrt/package/network/config/wifi-scripts/files/lib/wifi/mac80211.uc
 
 #5. 修改默认皮肤
 #sed -i 's/+luci-theme-bootstrap/+luci-theme-argon/g' immortalwrt/feeds/luci/collections/luci/Makefile
