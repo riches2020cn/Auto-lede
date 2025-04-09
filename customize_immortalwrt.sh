@@ -16,6 +16,7 @@ sed -i 's/192.168.1.1/192.168.2.1/g' immortalwrt/package/base-files/files/bin/co
 sed -i 's/set wireless.default_${name}.ssid=ImmortalWrt/set wireless.default_${name}.ssid=Hello/g' immortalwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh
 sed -i 's/set wireless.default_${name}.encryption=none/set wireless.default_${name}.encryption=psk-mixed/g' immortalwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh
 sed -i '/set wireless.default_${name}.encryption=psk-mixed/a \                        set wireless.default_${name}.key=password' immortalwrt/package/kernel/mac80211/files/lib/wifi/mac80211.sh
+
 #4. 修改默认皮肤
 #sed -i 's/+luci-theme-bootstrap/+luci-theme-argon/g' immortalwrt/feeds/luci/collections/luci/Makefile
 
