@@ -156,8 +156,8 @@ jobs:
     #    git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon    
 
 
-    # MT7986
-    - name: Download package
+    
+    - name: MT7986 Copy the configuration
       working-directory: ./immortalwrt
       run: |
         cp -f defconfig/mt7986-ax6000.config .config
