@@ -62,4 +62,6 @@ jobs:
 
 注意：拉取 Stable Release 版本号：v24.10.0，拉取命令末尾添加了拉取失败自动退出命令
 
-注意：查看版本号：https://downloads.immortalwrt.org/                 
+注意：查看版本号：https://downloads.immortalwrt.org/
+
+注意：目前依赖包只适合编译v24.10.0版本，如果更新依赖包或编译其他版本，需要进入该分支，点击“Setup dependencies via APT”，更新依赖包
