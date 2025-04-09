@@ -64,4 +64,6 @@ jobs:
 
 注意：查看版本号：https://downloads.immortalwrt.org/
 
-注意：每个分支的依赖包不同，目前依赖包只适合编译v24.10.0版本。如果更新依赖包或编译其他版本，需要进入该分支，点击“Setup dependencies via APT”，复制安装依赖包命令
+注意：每个分支的依赖包不同，目前依赖包只适合编译v24.10.0版本。
+
+注意：如果更新依赖包或编译其他版本，需要进入该分支，点击“Setup dependencies via APT”，复制安装依赖包命令
