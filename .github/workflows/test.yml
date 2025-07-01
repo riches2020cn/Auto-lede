@@ -1,4 +1,4 @@
-name: Build_ax6000_immortalwrt
+name: test
 
 on: 
   repository_dispatch:
