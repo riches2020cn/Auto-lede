@@ -7,13 +7,31 @@ on:
 jobs:
   build:
     runs-on: ubuntu-22.04
-
+    timeout-minutes: 360   # 最多运行6小时，防止意外卡住
+    
     steps:
     - name: Before freeing up disk space
       run: |
         echo "Before cleanup:"
         df -hT
-          
+        
+    - name: Safe disk cleanup (manual)
+      run: |
+        echo "Start safe cleanup..."
+        sudo swapoff -a
+        sudo rm -f /swapfile
+        sudo rm -rf /usr/local/lib/android
+        sudo rm -rf /opt/ghc
+        sudo rm -rf /usr/share/dotnet
+        sudo rm -rf /usr/local/graalvm
+        sudo rm -rf /usr/local/.ghcup
+        sudo rm -rf /usr/local/share/powershell
+        sudo rm -rf /usr/local/share/chromium
+        sudo rm -rf /usr/local/lib/node_modules
+        sudo docker rmi -f $(sudo docker images -q) || true
+        echo "After cleanup:"
+        df -hT
+        
     - name: Checkout
       uses: actions/checkout@master
 
