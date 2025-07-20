@@ -60,9 +60,7 @@ jobs:
 # AutoBuild-immortalwrt
 云编译 immortalwrt-OpenWrt
 
-编译前，请先更新脚本，拉取命令中更新至最新版本号（否则将无法编译成功）
-
-✔注意：将拉取命令中“v24.10.0”替换成最新 Stable Release 版本号，才能编译成功
+编译前，请先更新脚本，将拉取命令中“v24.10.0”替换成最新 Stable Release 版本号，才能编译成功
        
 获取最新 Stable Release 版本号：https://downloads.immortalwrt.org/
 
