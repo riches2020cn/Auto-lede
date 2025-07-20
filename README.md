@@ -60,10 +60,14 @@ jobs:
 # AutoBuild-immortalwrt
 云编译 immortalwrt-OpenWrt
 
-编译前，请先更新脚本，将拉取命令中“v24.10.0”替换成最新 Stable Release 版本号，才能编译成功
+1. 编译前，请先更新脚本，将拉取命令中“v24.10.0”替换成最新 Stable Release 版本号，才能编译成功
        
-获取最新 Stable Release 版本号：https://downloads.immortalwrt.org/
+   获取最新 Stable Release 版本号：https://downloads.immortalwrt.org/
 
-注意：更新依赖包，需要进入immortalwrt官网，先进入“v24.10”分支，点击下方“Setup dependencies via APT”，复制更新“depends-immortalwrt”文件
+2. 更新依赖包，进入immortalwrt官网，先进入“v24.10”分支
 
-注意：每个分支的依赖包不同，如果编译其他版本，需要进入immortalwrt官网，先进入该版本分支，点击下方“Setup dependencies via APT”，复制更新“depends-immortalwrt”文件
+   点击下方“Setup dependencies via APT”，复制更新“depends-immortalwrt”文件
+
+3. 每个分支的依赖包不同，如果编译其他版本，进入immortalwrt官网，先进入该版本分支
+
+   点击下方“Setup dependencies via APT”，复制更新“depends-immortalwrt”文件
