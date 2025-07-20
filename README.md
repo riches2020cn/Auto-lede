@@ -64,6 +64,6 @@ jobs:
        
 获取最新 Stable Release 版本号：https://downloads.immortalwrt.org/
 
-注意：每个分支的依赖包不同，目前依赖包只适合编译v24.10版本。
+注意：更新依赖包，需要进入编译v24.1分支，点击“Setup dependencies via APT”，更新“depends-immortalwrt”文件
 
-注意：如果更新依赖包或编译其他版本，需要进入该分支，点击“Setup dependencies via APT”，更新“depends-immortalwrt”文件
+注意：每个分支的依赖包不同，如果编译其他版本，需要进入其他版本分支，点击“Setup dependencies via APT”，更新“depends-immortalwrt”文件
