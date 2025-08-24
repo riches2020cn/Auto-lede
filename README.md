@@ -74,13 +74,13 @@
        
    获取最新 Stable Release 版本号：https://downloads.immortalwrt.org/
 
-2. 更新依赖包，进入immortalwrt仓库，先进入“v24.10”分支
+2. 更新依赖包，进入immortalwrt仓库，选择“v24.10”分支
 
    点击下方“Setup dependencies via APT”
 
    更新AutoBuild-lede仓库中的“depends-immortalwrt”文件：https://github.com/sky2016cn/AutoBuild-lede
 
-4. 每个分支的依赖包不同，如果编译其他版本，进入immortalwrt官网，先进入该版本分支
+4. 每个分支的依赖包不同，如果编译其他版本，进入immortalwrt官网，选择该版本分支
 
    点击下方“Setup dependencies via APT”，复制更新“depends-immortalwrt”文件
 
