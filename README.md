@@ -1,16 +1,28 @@
-# AutoBuild-lede
-云编译 Lede-OpenWrt
+<h1 align="center">云编译 Auto-OpenWrt</h1>
 
+---
 
-1. 编译某个插件，在“xxx.config”文件添加
+   ## 📚 目录
+- [📖 云编译 Lede](#-云编译Lede)
+- [📖 云编译 immortalwrt](#-云编译immortalwrt)
+  
+---
+
+## 📖 云编译Lede
+
+1. 更新依赖包，进入lede仓库
+
+   复制依赖包命令，更新AutoBuild-lede仓库中的“depends-immortalwrt”文件：https://github.com/sky2016cn/AutoBuild-lede 
+   
+2. 编译某个插件，在“xxx.config”文件添加
    
    例如：CONFIG_PACKAGE_luci-app-dockerman=y
 
-2. 取消编译某个插件，在“xxx.config”文件添加
+3. 取消编译某个插件，在“xxx.config”文件添加
    
    例如：# CONFIG_PACKAGE_luci-app-dockerman is not set
 
-3. 若要使用 Lean 的“luci-theme-argon”皮肤，在“xxx.config”文件添加
+4. 若要使用 Lean 的“luci-theme-argon”皮肤，在“xxx.config”文件添加
    
    CONFIG_PACKAGE_luci-theme-argon=y
 
@@ -28,46 +40,48 @@
   
    尤其注意“Initialization environment”安装依赖包部分，展开来细看是否出错
 
-   下方“Build_xxx.yml”脚本中的八大部分参考：https://github.com/dzlea/ActionsBuildOpenWRT/tree/main/.github/workflows   
------------------------------------------------------------------------
+7. 下方“Build_xxx.yml”脚本中的八大部分参考：https://github.com/dzlea/ActionsBuildOpenWRT/tree/main/.github/workflows
+   
+- jobs:
+  - build:
+    - runs-on: ubuntu-22.04  //注意ubuntu版本号
 
-jobs:
-  build:
-    runs-on: ubuntu-22.04  //注意ubuntu版本号
+    - name: Before freeing up disk space
 
-   - name: Before freeing up disk space
+    - name: "Optimize Disk Space"
+      uses: "hugoalh/disk-space-optimizer-ghaction@v0.8.1"   //注意“@v0.8.1”版本号
 
-   - name: "Optimize Disk Space"
-     uses: "hugoalh/disk-space-optimizer-ghaction@v0.8.1"   //注意“@v0.8.1”版本号
-
-   - name: Freeing up disk space
+    - name: Freeing up disk space
      
-   - name: Free up disk space complete
+    - name: Free up disk space complete
      
-   - name: Checkout
-     uses: actions/checkout@master  //原文末尾是“@main”，可自己定义
+    - name: Checkout
+      uses: actions/checkout@master  //原文末尾是“@main”，可自己定义
 
-   - name: Initialization environment
+    - name: Initialization environment
      
-   - name: Check Space
------------------------------------------------------------------------
+    - name: Check Space
 
-   余下部分参考：https://github.com/esirplayground/AutoBuild-OpenWrt
+- 余下部分参考：https://github.com/esirplayground/AutoBuild-OpenWrt
 
-   在此感谢两位原作者的付出！
+- 在此感谢dzlea、esirplayground两位原作者的付出！
+   
+---
 
-
-# AutoBuild-immortalwrt
-云编译 immortalwrt-OpenWrt
+## 📖 云编译immortalwrt
 
 1. 编译前，更新脚本，将拉取命令中“v24.10.0”替换成最新 Stable Release 版本号，才能编译成功
        
    获取最新 Stable Release 版本号：https://downloads.immortalwrt.org/
 
-2. 更新依赖包，进入immortalwrt官网，先进入“v24.10”分支
+2. 更新依赖包，进入immortalwrt仓库，先进入“v24.10”分支
+
+   点击下方“Setup dependencies via APT”
+
+   更新AutoBuild-lede仓库中的“depends-immortalwrt”文件：https://github.com/sky2016cn/AutoBuild-lede
+
+4. 每个分支的依赖包不同，如果编译其他版本，进入immortalwrt官网，先进入该版本分支
 
    点击下方“Setup dependencies via APT”，复制更新“depends-immortalwrt”文件
 
-3. 每个分支的依赖包不同，如果编译其他版本，进入immortalwrt官网，先进入该版本分支
-
-   点击下方“Setup dependencies via APT”，复制更新“depends-immortalwrt”文件
+---
