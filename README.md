@@ -12,7 +12,7 @@
 
 1. 更新依赖包
 
-   打开依赖包仓库进行更新：https://github.com/sky2016cn/AutoBuild-lede（按照依赖包仓库说明进行更新）
+   打开依赖包仓库进行更新：https://github.com/sky2016cn/AutoBuild-lede  （按照依赖包仓库说明进行更新）
    
 2. 编译某个插件，在“xxx.config”文件添加
    
@@ -76,7 +76,7 @@
 
 2. 更新依赖包
 
-   打开：https://github.com/sky2016cn/AutoBuild-lede（按照依赖包仓库说明进行更新）
+   打开：https://github.com/sky2016cn/AutoBuild-lede  （按照依赖包仓库说明进行更新）
 
 4. 每个分支的依赖包不同，如果编译其他版本，进入immortalwrt官网，选择该版本分支
 
