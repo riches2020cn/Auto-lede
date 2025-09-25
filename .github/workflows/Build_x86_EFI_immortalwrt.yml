@@ -99,7 +99,7 @@ jobs:
       #echo "src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git;main" >> ./feeds.conf.default
       #echo "src-git passwall https://github.com/xiaorouji/openwrt-passwall.git;main" >> ./feeds.conf.default
       #echo "src-git passwall2 https://github.com/xiaorouji/openwrt-passwall2.git;main" >> ./feeds.conf.default
-      # 查看版本号：https://downloads.immortalwrt.org/
+      # 查看版本号：https://downloads.immortalwrt.org/（immoralwrt 自带 passwall,若要使用 passwall2 去掉上面的注释号）
         
       # L大默认添加了dockerman
       # echo "src-git dockerman https://github.com/lisaac/luci-app-dockerman" >> ./feeds.conf.default
@@ -126,10 +126,10 @@ jobs:
         mv package/OpenClash/luci-app-openclash package
         rm -rf package/OpenClash
 
-    #- name: Import external feeds - poweroff
-    #  working-directory: ./immortalwrt
-    #  run: |
-    #   git clone https://github.com/sky2016cn/luci-app-poweroff.git package/luci-app-poweroff   
+    - name: Import external feeds - poweroff
+      working-directory: ./immortalwrt
+      run: |
+       git clone https://github.com/sky2016cn/luci-app-poweroff.git package/luci-app-poweroff   
 
     # msd_lite 必须放在feeds命令后，L大默认添加了 msd_lite，使用 msd_lite 收看 IPTV
     #- name: Import external feeds - msd_lite
@@ -140,15 +140,15 @@ jobs:
     #    git clone https://github.com/ximiTech/msd_lite.git feeds/packages/net/msd_lite
 
     # 如果添加上方的 msd_lite，需要再次运行更新feeds命令    
-    - name: Update feeds
-      working-directory: ./immortalwrt
-      run: |
-        ./scripts/feeds update -a
+    #- name: Update feeds
+    #  working-directory: ./immortalwrt
+    #  run: |
+    #    ./scripts/feeds update -a
         
-    - name: Install feeds
-      working-directory: ./immortalwrt
-      run: |
-        ./scripts/feeds install -a
+    #- name: Install feeds
+    #  working-directory: ./immortalwrt
+    #  run: |
+    #    ./scripts/feeds install -a
         
     # 范例 1: 注意拉取命令的保存路径
     #- name: Import external feeds - OpenAppFilter
