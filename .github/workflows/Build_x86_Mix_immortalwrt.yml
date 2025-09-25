@@ -95,11 +95,11 @@ jobs:
       run: |
         git clone --depth 1 -b v24.10.0 --single-branch --filter=blob:none $REPO_URL immortalwrt || { echo 'Git clone failed!'; exit 1; }
         cd immortalwrt
-        echo "src-git helloworld https://github.com/fw876/helloworld.git" >> ./feeds.conf.default
+      #echo "src-git helloworld https://github.com/fw876/helloworld.git" >> ./feeds.conf.default
       #echo "src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git;main" >> ./feeds.conf.default
       #echo "src-git passwall https://github.com/xiaorouji/openwrt-passwall.git;main" >> ./feeds.conf.default
       #echo "src-git passwall2 https://github.com/xiaorouji/openwrt-passwall2.git;main" >> ./feeds.conf.default
-      # 查看版本号：https://downloads.immortalwrt.org/
+      # 查看版本号：https://downloads.immortalwrt.org/（immoralwrt 默认添加了 passwall,若要使用 passwall2 去掉上面的注释号）
         
       # L大默认添加了dockerman
       # echo "src-git dockerman https://github.com/lisaac/luci-app-dockerman" >> ./feeds.conf.default
@@ -131,7 +131,7 @@ jobs:
       run: |
         git clone https://github.com/sky2016cn/luci-app-poweroff.git package/luci-app-poweroff   
 
-    # msd_lite 必须放在feeds命令后，L大默认添加了 msd_lite，使用 msd_lite 收看 IPTV
+    # msd_lite 必须放在feeds命令后，immoralwrt 默认添加了 msd_lite，使用 msd_lite 收看 IPTV
     #- name: Import external feeds - msd_lite
     #  working-directory: ./immortalwrt
     #  run: |
