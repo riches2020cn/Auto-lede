@@ -126,10 +126,10 @@ jobs:
         mv package/OpenClash/luci-app-openclash package
         rm -rf package/OpenClash
         
-    - name: Import external feeds - poweroff
-      working-directory: ./openwrt
-      run: |
-        git clone https://github.com/sky2016cn/luci-app-poweroff.git package/luci-app-poweroff
+    #- name: Import external feeds - poweroff
+    #  working-directory: ./openwrt
+    #  run: |
+    #    git clone https://github.com/sky2016cn/luci-app-poweroff.git package/luci-app-poweroff
 
     # msd_lite 必须放在feeds命令后，L大默认添加了 msd_lite，使用 msd_lite 收看 IPTV
     #- name: Import external feeds - msd_lite
