@@ -111,7 +111,7 @@ jobs:
       run: |
         ./scripts/feeds install -a
 
-    # msd_lite 必须放在feeds命令后，L大默认添加了 msd_lite，使用 msd_lite 收看 IPTV
+    # msd_lite 必须放在feeds命令后，immoralwrt 默认添加了 msd_lite，使用 msd_lite 收看 IPTV
     #- name: Import external feeds - msd_lite
     #  working-directory: ./immortalwrt
     #  run: |
