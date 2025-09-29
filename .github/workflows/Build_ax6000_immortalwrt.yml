@@ -116,6 +116,7 @@ jobs:
       run: |
         ./scripts/feeds install -a
 
+    # immoralwrt 默认添加了 OpenClash
     #- name: Import external feeds - OpenClash
     #  working-directory: ./immortalwrt
     #  run: |
