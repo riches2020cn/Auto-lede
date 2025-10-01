@@ -114,14 +114,14 @@
 - 再打开：https://github.com/sky2016cn/AutoBuild-lede  （按照依赖包仓库说明进行更新）
 
 2. 配置文件.config   
-使用官方的 defconfig/mt7986-ax6000.config 作为基础配置，云编译的目录和官方目录不同，所以命令略有不同
-cp -f immortalwrt/defconfig/mt7986-ax6000.config immortalwrt/.config
+- 使用官方的 defconfig/mt7986-ax6000.config 作为基础配置，云编译的目录和官方目录不同，所以命令略有不同
+- cp -f immortalwrt/defconfig/mt7986-ax6000.config immortalwrt/.config
     
-追加你要的插件配置
-cat >> immortalwrt/.config <<EOF
-CONFIG_PACKAGE_luci-app-msd_lite=y
-CONFIG_PACKAGE_luci-app-openclash=y
-CONFIG_PACKAGE_luci-app-passwall=y
-EOF
+- 追加你要的插件配置
+- cat >> immortalwrt/.config <<EOF
+- CONFIG_PACKAGE_luci-app-msd_lite=y
+- CONFIG_PACKAGE_luci-app-openclash=y
+- CONFIG_PACKAGE_luci-app-passwall=y
+- EOF
   
 ---
