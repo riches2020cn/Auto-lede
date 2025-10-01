@@ -90,7 +90,7 @@
    
 - 再打开：https://github.com/sky2016cn/AutoBuild-lede  （按照依赖包仓库说明进行更新）
 
-4. 每个分支的依赖包不同，如果编译其他版本，进入immortalwrt官网，选择该版本分支
+3. 每个分支的依赖包不同，如果编译其他版本，进入immortalwrt官网，选择该版本分支
 
    点击下方“Setup dependencies via APT”，复制更新“depends-immortalwrt”文件
 
@@ -98,7 +98,7 @@
 
 ## 📖 云编译immortalwrt-mt798x
 
-1. 更新依赖包
+更新依赖包
 - 方法1：自动更新（推荐，目前编译脚本使用此方法）
 - 打开官网：https://github.com/hanwckf/immortalwrt-mt798x
 - 找到“Method 2“ 脚本命令（该命令会自动安装依赖包并更新编译环境，与官方保持一致的编译环境，编译的固件更稳定）
