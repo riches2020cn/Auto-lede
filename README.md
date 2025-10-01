@@ -84,7 +84,7 @@
 - 修改脚本：
 - sudo bash -c 'bash <(curl -s https://build-scripts.immortalwrt.org/init_build_environment.sh)'
 - sudo apt --fix-broken install -y
-- 将官方脚本命令修改为下方手动安装依赖包
+- 将上方官方脚本命令修改为下方手动更新命令
 - sudo -E apt-get -qq update
 - sudo -E apt-get -qq install $(curl -fsSL raw.githubusercontent.com/sky2016cn/AutoBuild-lede/master/depends-immortalwrt)
    
@@ -107,7 +107,7 @@
 - 修改脚本：
 - sudo bash -c 'bash <(curl -sL https://build-scripts.immortalwrt.eu.org/init_build_environment.sh)'
 - sudo apt --fix-broken install -y
-- 将官方脚本命令修改为下方手动安装依赖包
+- 将上方官方脚本命令修改为下方手动更新命令
 - sudo -E apt-get -qq update
 - sudo -E apt-get -qq install $(curl -fsSL raw.githubusercontent.com/sky2016cn/AutoBuild-lede/master/depends-immortalwrt_mt798x)
    
