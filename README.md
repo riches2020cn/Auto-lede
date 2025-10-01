@@ -98,7 +98,7 @@
 
 ## 📖 云编译immortalwrt-mt798x
 
-更新依赖包
+1. 更新依赖包
 - 方法1：自动更新（推荐，目前编译脚本使用此方法）
 - 打开官网：https://github.com/hanwckf/immortalwrt-mt798x
 - 找到“Method 2“ 脚本命令（该命令会自动安装依赖包并更新编译环境，与官方保持一致的编译环境，编译的固件更稳定）
@@ -113,4 +113,15 @@
    
 - 再打开：https://github.com/sky2016cn/AutoBuild-lede  （按照依赖包仓库说明进行更新）
 
+2. 配置文件.config   
+# 使用官方的 defconfig/mt7986-ax6000.config 作为基础配置，云编译的目录和官方目录不同，所以命令略有不同
+cp -f immortalwrt/defconfig/mt7986-ax6000.config immortalwrt/.config
+    
+# 追加你要的插件配置
+cat >> immortalwrt/.config <<EOF
+CONFIG_PACKAGE_luci-app-msd_lite=y
+CONFIG_PACKAGE_luci-app-openclash=y
+CONFIG_PACKAGE_luci-app-passwall=y
+EOF
+  
 ---
