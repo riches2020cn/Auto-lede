@@ -75,10 +75,10 @@
    获取最新 Stable Release 版本号：https://downloads.immortalwrt.org/
 
 2. 更新依赖包
-   方法1：自动更新（推荐，目前编译脚本使用此方法）
-   打开官网：https://github.com/immortalwrt/immortalwrt
-   左上角选择对应的版本号
-   找到“Method 2“ 脚本命令（该命令会自动安装依赖包并更新编译环境，与官方保持一致的编译环境，编译的固件更稳定）
+-方法1：自动更新（推荐，目前编译脚本使用此方法）
+ -打开官网：https://github.com/immortalwrt/immortalwrt
+ -左上角选择对应的版本号
+ -找到“Method 2“ 脚本命令（该命令会自动安装依赖包并更新编译环境，与官方保持一致的编译环境，编译的固件更稳定）
    
    方法2：手动更新（不推荐）
    修改脚本：
