@@ -112,3 +112,5 @@
    sudo -E apt-get -qq install $(curl -fsSL raw.githubusercontent.com/sky2016cn/AutoBuild-lede/master/depends-immortalwrt_mt798x)
    
    再打开：https://github.com/sky2016cn/AutoBuild-lede  （按照依赖包仓库说明进行更新）
+
+---
