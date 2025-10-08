@@ -5,7 +5,8 @@
    ## 📚 目录
 - [📖 云编译 Lede](#-云编译Lede)
 - [📖 云编译 immortalwrt](#-云编译immortalwrt)
-  
+- [📖 云编译 immortalwrt-mt798x](#-云编译immortalwrt-mt798x)
+
 ---
 
 ## 📖 云编译Lede
