@@ -152,7 +152,7 @@ jobs:
         
     # 范例 1: 注意拉取命令的保存路径
     #- name: Import external feeds - OpenAppFilter
-    #  working-directory: ./oimmortalwrt
+    #  working-directory: ./immortalwrt
     #  run: |
     #    git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 
