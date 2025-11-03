@@ -87,7 +87,6 @@ jobs:
         sudo dpkg --configure -a || true
         sudo apt --fix-broken install -y || true
         # 4. 清理系统和缓存
-        sudo apt --fix-broken install -y 
         sudo -E apt-get -qq autoremove --purge
         sudo -E apt-get -qq clean
         sudo rm -rf /etc/apt/sources.list.d/* /usr/local/lib/android /opt/ghc /usr/share/dotnet /usr/local/graalvm /usr/local/.ghcup \
