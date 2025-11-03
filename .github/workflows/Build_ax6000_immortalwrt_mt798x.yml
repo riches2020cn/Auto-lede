@@ -120,6 +120,14 @@ jobs:
       run: |
         ./scripts/feeds install -a
 
+    # immoralwrt_mt798x 默认添加了 OpenClash
+    #- name: Import external feeds - OpenClash
+    #  working-directory: ./immortalwrt
+    #  run: |
+    #    git clone --depth=1 https://github.com/vernesong/OpenClash.git package/OpenClash
+    #    mv package/OpenClash/luci-app-openclash package
+    #    rm -rf package/OpenClash 
+    
     # msd_lite 必须放在feeds命令后，immoralwrt 默认添加了 msd_lite，使用 msd_lite 收看 IPTV
     #- name: Import external feeds - msd_lite
     #  working-directory: ./immortalwrt
@@ -151,8 +159,6 @@ jobs:
     #  run: |
     #    rm -rf feeds/luci/themes/luci-theme-argon
     #    git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git feeds/luci/themes/luci-theme-argon    
-
-
     
     - name: Configuration Customization - Build_ax6000_immortalwrt_mt798x
       run: |
