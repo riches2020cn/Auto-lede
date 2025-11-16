@@ -1,3 +1,5 @@
+# 空间不足的代码来自脚本：https://github.com/tuxsu/ActionsBuildOpenWRT/blob/main/.github/workflows/build-x86_64.yml
+
 #=================================================
 # Copyright (c) 2019-2023 sky2016cn
 # Author: sky2016cn
@@ -72,29 +74,21 @@ jobs:
     - name: Checkout
       uses: actions/checkout@master
 
+    # 如果“Initialization environment”报错，是因为官方 APT 设置依赖项的脚本已经不合时宜，在官方修正之前，请使用下方的代码
     - name: Initialization environment
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
-        # 1. 修复可能的 dpkg/apt 错误
-        sudo rm -rf /var/lib/apt/lists/*
-        sudo apt-get clean
-        sudo dpkg --configure -a || true
-        sudo apt-get update -y || true
-        # 2. 执行 immortalwrt_mt798x 官方通过 APT 设置依赖项
+        sudo -E apt-get -qq update
         sudo bash -c 'bash <(curl -sL https://build-scripts.immortalwrt.eu.org/init_build_environment.sh)'
-        # 3. 再次修复潜在 dpkg 状态
-        sudo dpkg --configure -a || true
-        sudo apt --fix-broken install -y || true
-        # 4. 清理系统和缓存
         sudo -E apt-get -qq autoremove --purge
         sudo -E apt-get -qq clean
         sudo rm -rf /etc/apt/sources.list.d/* /usr/local/lib/android /opt/ghc /usr/share/dotnet /usr/local/graalvm /usr/local/.ghcup \
         /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules
         sudo timedatectl set-timezone "Asia/Shanghai"
-        sudo chown $USER:$GROUPS $GITHUB_WORKSPACE
+        sudo chown $USER:$GROUPS $GITHUB_WORKSPACE    
 
-    # 如果编译失败是由执行 immortalwrt_mt798x 官方通过 APT 设置依赖项造成的，请注销上面的代码，启用下方的代码，并更新依赖包
+    # 使用此代码前，请先更新依赖包的命令：https://github.com/sky2016cn/AutoBuild-lede（依赖包仓库） 
     #- name: Initialization environment
     #  env:
     #    DEBIAN_FRONTEND: noninteractive
