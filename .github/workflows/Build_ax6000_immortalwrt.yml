@@ -76,17 +76,8 @@ jobs:
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
-        # 1. 修复可能的 dpkg/apt 错误
-        sudo rm -rf /var/lib/apt/lists/*
-        sudo apt-get clean
-        sudo dpkg --configure -a || true
-        sudo apt-get update -y || true
-        # 2. 执行 immortalwrt 官方通过 APT 设置依赖项
+        sudo -E apt-get -qq update
         sudo bash -c 'bash <(curl -s https://build-scripts.immortalwrt.org/init_build_environment.sh)'
-        # 3. 再次修复潜在 dpkg 状态
-        sudo dpkg --configure -a || true
-        sudo apt --fix-broken install -y || true
-        # 4. 清理系统和缓存
         sudo -E apt-get -qq autoremove --purge
         sudo -E apt-get -qq clean
         sudo rm -rf /etc/apt/sources.list.d/* /usr/local/lib/android /opt/ghc /usr/share/dotnet /usr/local/graalvm /usr/local/.ghcup \
