@@ -72,32 +72,32 @@ jobs:
     - name: Checkout
       uses: actions/checkout@master
 
-    - name: Initialization environment
-      env:
-        DEBIAN_FRONTEND: noninteractive
-      run: |
-        sudo -E apt-get -qq update
-        sudo bash -c 'bash <(curl -s https://build-scripts.immortalwrt.org/init_build_environment.sh)'
-        sudo -E apt-get -qq autoremove --purge
-        sudo -E apt-get -qq clean
-        sudo rm -rf /etc/apt/sources.list.d/* /usr/local/lib/android /opt/ghc /usr/share/dotnet /usr/local/graalvm /usr/local/.ghcup \
-        /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules
-        sudo timedatectl set-timezone "Asia/Shanghai"
-        sudo chown $USER:$GROUPS $GITHUB_WORKSPACE
-
-    # 如果编译失败是由执行 immortalwrt 官方通过 APT 设置依赖项造成的，请注销上面的代码，启用下方的代码，并更新依赖包
     #- name: Initialization environment
     #  env:
     #    DEBIAN_FRONTEND: noninteractive
-    #  run: |  
+    #  run: |
     #    sudo -E apt-get -qq update
-    #    sudo -E apt-get -qq install $(curl -fsSL raw.githubusercontent.com/sky2016cn/AutoBuild-lede/master/depends-immortalwrt)
+    #    sudo bash -c 'bash <(curl -s https://build-scripts.immortalwrt.org/init_build_environment.sh)'
     #    sudo -E apt-get -qq autoremove --purge
     #    sudo -E apt-get -qq clean
     #    sudo rm -rf /etc/apt/sources.list.d/* /usr/local/lib/android /opt/ghc /usr/share/dotnet /usr/local/graalvm /usr/local/.ghcup \
     #    /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules
     #    sudo timedatectl set-timezone "Asia/Shanghai"
     #    sudo chown $USER:$GROUPS $GITHUB_WORKSPACE
+
+    # 如果编译失败是由执行 immortalwrt 官方通过 APT 设置依赖项造成的，请注销上面的代码，启用下方的代码，并更新依赖包
+    - name: Initialization environment
+      env:
+        DEBIAN_FRONTEND: noninteractive
+      run: |  
+        sudo -E apt-get -qq update
+        sudo -E apt-get -qq install $(curl -fsSL raw.githubusercontent.com/sky2016cn/AutoBuild-lede/master/depends-immortalwrt)
+        sudo -E apt-get -qq autoremove --purge
+        sudo -E apt-get -qq clean
+        sudo rm -rf /etc/apt/sources.list.d/* /usr/local/lib/android /opt/ghc /usr/share/dotnet /usr/local/graalvm /usr/local/.ghcup \
+        /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules
+        sudo timedatectl set-timezone "Asia/Shanghai"
+        sudo chown $USER:$GROUPS $GITHUB_WORKSPACE
         
     - name: Check Space
       run: |
