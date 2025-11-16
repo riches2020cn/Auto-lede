@@ -1,4 +1,5 @@
-#空间不足的代码来自脚本：https://github.com/tuxsu/ActionsBuildOpenWRT/blob/main/.github/workflows/build-x86_64.yml
+# 空间不足的代码来自脚本：https://github.com/tuxsu/ActionsBuildOpenWRT/blob/main/.github/workflows/build-x86_64.yml
+
 #=================================================
 # Copyright (c) 2019-2023 sky2016cn
 # Author: sky2016cn
@@ -73,7 +74,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@master
 
-    # 如果在“Initialization environment”报错，是因为官方 APT 设置依赖项的脚本已经不合时宜，在修正之前，请使用下方的代码
+    # 如果“Initialization environment”报错，是因为官方 APT 设置依赖项的脚本已经不合时宜，在官方修正之前，请使用下方的代码
     - name: Initialization environment
       env:
         DEBIAN_FRONTEND: noninteractive
@@ -87,6 +88,7 @@ jobs:
         sudo timedatectl set-timezone "Asia/Shanghai"
         sudo chown $USER:$GROUPS $GITHUB_WORKSPACE
 
+    # 使用此代码前，请先更新依赖包的命令：https://github.com/sky2016cn/AutoBuild-lede（依赖包仓库） 
     #- name: Initialization environment
     #  env:
     #    DEBIAN_FRONTEND: noninteractive
