@@ -123,6 +123,12 @@
 - CONFIG_PACKAGE_luci-app-msd_lite=y
 - CONFIG_PACKAGE_luci-app-openclash=y
 - CONFIG_PACKAGE_luci-app-passwall=y
+- CONFIG_PACKAGE_xray-core=y
+- CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Xray=y
+- CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ChinaDNS_NG=y
+- CONFIG_PACKAGE_kmod-tun=y
+- CONFIG_PACKAGE_curl=y
+- CONFIG_PACKAGE_ca-bundle=y
 - EOF
   
 ---
