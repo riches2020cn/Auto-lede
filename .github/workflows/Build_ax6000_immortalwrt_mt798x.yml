@@ -175,7 +175,11 @@ jobs:
     
         # 追加你要的插件配置
         cat >> immortalwrt/.config <<EOF
-        CONFIG_PACKAGE_luci-app-adblock-fast=y
+        # Adblock Fast 组合拳
+        CONFIG_PACKAGE_adblock-fast=y
+        CONFIG_PACKAGE_luci-app-adblock-fast=y        
+        CONFIG_PACKAGE_luci-i18n-adblock-fast-zh-cn=y
+        # 其他原有插件
         CONFIG_PACKAGE_luci-app-msd_lite=y
         CONFIG_PACKAGE_luci-app-openclash=y
         CONFIG_PACKAGE_luci-app-passwall=y
