@@ -172,6 +172,13 @@ jobs:
       run: |
         cd immortalwrt
         
+        # 2. 修正路径：既然已经在文件夹里了，直接从当前目录的 defconfig 复制
+        if [ -f "defconfig/mt7986-ax6000.config" ]; then
+            cp -f defconfig/mt7986-ax6000.config .config
+        else
+            echo "❌ 找不到基础配置文件，请确认仓库路径是否正确" && exit 1
+        fi
+        
         # 使用官方的 defconfig/mt7986-ax6000.config 作为基础配置，云编译的目录和官方目录不同，所以命令略有不同
         cp -f immortalwrt/defconfig/mt7986-ax6000.config immortalwrt/.config
     
