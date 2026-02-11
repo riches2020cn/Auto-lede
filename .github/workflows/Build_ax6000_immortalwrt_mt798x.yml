@@ -170,6 +170,8 @@ jobs:
     
     - name: Configuration Customization - Build_ax6000_immortalwrt_mt798x
       run: |
+        cd immortalwrt
+        
         # 使用官方的 defconfig/mt7986-ax6000.config 作为基础配置，云编译的目录和官方目录不同，所以命令略有不同
         cp -f immortalwrt/defconfig/mt7986-ax6000.config immortalwrt/.config
     
@@ -188,7 +190,7 @@ jobs:
         EOF
 
         # 补全依赖并修正配置（这一步会处理重复项并保留作者原有设置）
-        cd immortalwrt && make defconfig
+        make defconfig
         # 确认 adblock-fast 已成功加入配置
         if grep -q "CONFIG_PACKAGE_luci-app-adblock-fast=y" .config; then
             echo "✅ adblock-fast 已成功加入配置"
