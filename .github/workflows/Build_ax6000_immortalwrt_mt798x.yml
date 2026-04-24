@@ -1,0 +1,161 @@
+# 空间不足的代码来自脚本：https://github.com/tuxsu/ActionsBuildOpenWRT/blob/main/.github/workflows/build-x86_64.yml
+
+#=================================================
+# Copyright (c) 2019-2023 sky2016cn
+# Author: sky2016cn
+# licensed under the MIT License
+# See /LICENSE for more information
+# Description: Build OpenWrt using GitHub Actions
+#=================================================
+
+name: Build_ax6000_immortalwrt_mt798x
+
+# Add a button to trigger the workflow
+on: 
+  repository_dispatch:
+  workflow_dispatch:
+
+  #schedule:
+    #- cron: 0 20 1,15 * *
+    # 对应的是 UTC 时间，需要转换，20 代表北京时间4点，每个月1日/15日4点编译一次
+    # schedule去＃号，- cron 对齐schedule的 h，开始定时编译，Actions会有十五分钟的延迟
+    
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+    - name: Before freeing up disk space
+      run: |
+        echo "Before freeing up disk space"
+        echo "=============================================================================="
+        df -hT
+        echo "=============================================================================="
+    - name: Maximize build space
+      uses: easimon/maximize-build-space@master
+      with:
+        root-reserve-mb: 2048
+        temp-reserve-mb: 512
+        swap-size-mb: 2048
+        remove-dotnet: 'true'
+        remove-android: 'true'
+        remove-haskell: 'true'
+        remove-codeql: 'true'
+        overprovision-lvm: 'true'
+        build-mount-path: '/builder'        
+
+    - name: Symlink workspace to maximized mount
+      run: |
+        sudo mkdir -p /builder
+        sudo chown -R runner:runner /builder
+        sudo ln -sfn /builder $GITHUB_WORKSPACE || true
+        ls -ld $GITHUB_WORKSPACE
+
+    - name: Free up disk space complete
+      run: |
+        echo "Free up disk space complete"
+        echo "=============================================================================="
+        df -hT
+        echo "=============================================================================="
+
+    - name: Checkout repository
+      uses: actions/checkout@v6        
+
+    # 如果“Initialization environment”报错，是因为官方 APT 设置依赖项的脚本已经不合时宜，在官方修正之前，请使用下方的代码
+    - name: Initialization environment
+      env:
+        DEBIAN_FRONTEND: noninteractive
+      run: |
+        sudo -E apt-get -qq update
+        sudo bash -c 'bash <(curl -sL https://build-scripts.immortalwrt.eu.org/init_build_environment.sh)'
+        sudo -E apt-get -qq autoremove --purge
+        sudo -E apt-get -qq clean
+        sudo rm -rf /etc/apt/sources.list.d/* /usr/local/lib/android /opt/ghc /usr/share/dotnet /usr/local/graalvm /usr/local/.ghcup \
+        /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules
+        sudo timedatectl set-timezone "Asia/Shanghai"
+        sudo chown $USER:$GROUPS $GITHUB_WORKSPACE    
+
+    # 使用此代码前，请先更新依赖包的命令：https://github.com/sky2016cn/AutoBuild-lede（依赖包仓库） 
+    #- name: Initialization environment
+    #  env:
+    #    DEBIAN_FRONTEND: noninteractive
+    #  run: |
+    #    sudo -E apt-get -qq update
+    #    sudo -E apt-get -qq install $(curl -fsSL raw.githubusercontent.com/sky2016cn/AutoBuild-lede/master/depends-immortalwrt_mt798x)
+    #    sudo -E apt-get -qq autoremove --purge
+    #    sudo -E apt-get -qq clean
+    #    sudo rm -rf /etc/apt/sources.list.d/* /usr/local/lib/android /opt/ghc /usr/share/dotnet /usr/local/graalvm /usr/local/.ghcup \
+    #    /usr/local/share/powershell /usr/local/share/chromium /usr/local/lib/node_modules
+    #    sudo timedatectl set-timezone "Asia/Shanghai"
+    #    sudo chown $USER:$GROUPS $GITHUB_WORKSPACE    
+        
+    - name: Check Space
+      run: |
+        df -h
+
+       # 注意：immortalwrt_mt798x强烈不建议自行更新源码中的插件，容易编译失败，也不建议添加第三方插件，造成固件不稳定，打开Lede官方插件库查询：https://github.com/hanwckf/immortalwrt-mt798x/blob/openwrt-21.02/feeds.conf.default（注意 luci后面的分支，打开 luci仓库中正确的分支找到“applications”查询插件）
+    - name: Clone source code
+      env: 
+        REPO_URL: https://github.com/hanwckf/immortalwrt-mt798x
+      run: |
+        git clone --depth=1 $REPO_URL immortalwrt || { echo 'Git clone failed!'; exit 1; }
+                    
+    - name: Update feeds
+      working-directory: ./immortalwrt
+      run: |
+        ./scripts/feeds update -a
+
+    - name: Install feeds
+      working-directory: ./immortalwrt
+      run: |
+        ./scripts/feeds install -a
+
+    - name: Install feeds
+      working-directory: ./immortalwrt
+      run: |
+        ./scripts/feeds install -a
+
+    - name: Configuration Customization - Build_ax6000_immortalwrt_mt798x
+      run: |
+        # 使用官方的 defconfig/mt7986-ax6000.config 作为基础配置，云编译的目录和官方目录不同，所以命令略有不同
+        cp -f immortalwrt/defconfig/mt7986-ax6000.config immortalwrt/.config
+    
+        # 追加你要的插件配置
+        cat >> immortalwrt/.config <<EOF
+        CONFIG_PACKAGE_luci-app-msd_lite=y
+        CONFIG_PACKAGE_luci-app-openclash=y
+        CONFIG_PACKAGE_luci-app-passwall=y
+        CONFIG_PACKAGE_xray-core=y
+        CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Xray=y
+        CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ChinaDNS_NG=y
+        CONFIG_PACKAGE_kmod-tun=y
+        CONFIG_PACKAGE_curl=y
+        CONFIG_PACKAGE_ca-bundle=y
+        EOF
+        
+        # 导入 customize_immortalwrt.sh 文件
+        chmod +x ./customize_immortalwrt.sh && ./customize_immortalwrt.sh
+        cd immortalwrt && make defconfig
+        
+    - name: Download package
+      working-directory: ./immortalwrt
+      run: |
+        make download -j$(nproc)
+        find dl -size -1024c -exec ls -l {} \;
+        find dl -size -1024c -exec rm -f {} \;
+
+    - name: Build firmware
+      working-directory: ./immortalwrt
+      run: |
+        echo -e "$(nproc) thread build."
+        make -j$(nproc) V=s
+
+    - name: Check Space
+      run: |
+        df -h
+        
+    - name: Upload artifact
+      uses: actions/upload-artifact@v7
+      with:
+        name: ax6000_immortalwrt_mt798x
+        path: immortalwrt/bin
